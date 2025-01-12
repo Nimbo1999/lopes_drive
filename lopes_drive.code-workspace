@@ -1,0 +1,93 @@
+{
+  "folders": [
+    {
+      "path": "./frontend",
+      "name": "frontend"
+    },
+    {
+      "path": "./storage",
+      "name": "Storage APP"
+    },
+  ],
+  "settings": {
+    "editor.rulers": [
+      80
+    ],
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.indentSize": "tabSize",
+    "editor.tabSize": 2,
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "terminal.integrated.profiles.windows": {
+      "PowerShell": {
+        "source": "PowerShell",
+        "icon": "terminal-powershell"
+      },
+      "Command Prompt": {
+        "path": [
+          "${env:windir}\\Sysnative\\cmd.exe",
+          "${env:windir}\\System32\\cmd.exe"
+        ],
+        "args": [],
+        "icon": "terminal-cmd"
+      },
+      "Git Bash": {
+        "source": "Git Bash"
+      }
+    },
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "workbench.iconTheme": "material-icon-theme",
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+      "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+      },
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[go]": {
+      "editor.defaultFormatter": "golang.go",
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "material-icon-theme.activeIconPack": "react",
+    "remote.autoForwardPortsSource": "hybrid",
+    "workbench.colorTheme": "Dracula Theme"
+  },
+  "extensions": {
+    "recommendations": [
+      "formulahendry.auto-rename-tag",
+      "EditorConfig.EditorConfig",
+      "dbaeumer.vscode-eslint",
+      "ms-vscode.vscode-typescript-next",
+      "PKief.material-icon-theme",
+      "esbenp.prettier-vscode",
+      "humao.rest-client",
+      "stylelint.vscode-stylelint",
+      "meganrogge.template-string-converter",
+      "styled-components.vscode-styled-components",
+      "ms-azuretools.vscode-docker",
+      "dracula-theme.theme-dracula",
+      "golang.go",
+      "766b.go-outliner",
+      "redhat.vscode-yaml",
+    ],
+  }
+}
