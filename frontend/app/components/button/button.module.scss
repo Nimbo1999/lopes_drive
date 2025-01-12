@@ -4,4 +4,9 @@
 
 .button {
   @include dimensions.input-dimensions(map.get(variables.$palette, primary, main));
+
+  &.button--small {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
 }

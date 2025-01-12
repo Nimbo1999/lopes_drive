@@ -1,6 +1,9 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 
+import styles from "./layout.module.scss";
+import { Avatar } from "~/components";
+
 export const meta: MetaFunction = () => {
   return [
     { title: "Lopes Drive" },
@@ -10,8 +13,13 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div>
-      Landing
+    <div className={styles.layout}>
+      <header className={styles.header}>
+        <h1>Lopes Drive</h1>
+
+        <Avatar src="/assets/profile.jpeg" alt="profile" />
+      </header>
+
       <Outlet />
     </div>
   );
