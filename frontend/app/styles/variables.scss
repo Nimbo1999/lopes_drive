@@ -1,0 +1,33 @@
+$fonts: (
+  family: (
+    inter: "\"Inter\", serif",
+    nunito: "\"Nunito Sans\", serif",
+  ),
+  weight: (
+    thin: 200,
+    normal: 400,
+    medium: 500,
+    bold: 600,
+  ),
+);
+
+$breakpoint: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+$palette: (
+  background: (
+    default: #0c2423,
+    card: #103332,
+  ),
+  text: (
+    primary: #d4f1f0,
+    secondary: #95a8a7,
+  ),
+  primary: (
+    main: #1d817d,
+  )
+);

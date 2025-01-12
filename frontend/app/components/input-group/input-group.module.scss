@@ -1,0 +1,18 @@
+@use "sass:map";
+@use "/app/styles/variables";
+@use "/app/styles/mixin/dimensions";
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    margin-bottom: 0.5rem;
+  }
+
+  &__input {
+    @include dimensions.input-dimensions(map.get(variables.$palette, background, card));
+    color: #{map.get(variables.$palette, text, secondary)};
+    outline-color: rgba(map.get(variables.$palette, text, secondary), 0.5);
+  }
+}

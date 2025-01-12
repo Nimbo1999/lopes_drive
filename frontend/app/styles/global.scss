@@ -1,0 +1,46 @@
+@use "sass:map";
+@use "variables";
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  color: inherit;
+
+  &::after, &::before {
+    box-sizing: inherit;
+    font-family: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+html {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+  font-size: 16px;
+  font-family: #{map.get(variables.$fonts, family, nunito)};
+  font-weight: #{map.get(variables.$fonts, weight, normal)};
+  color: #{map.get(variables.$palette, text, primary)};
+
+  background-color: #{map.get(variables.$palette, background, default)};
+}
+
+body {
+  width: 100dvw;
+  height: 100dvh;
+}
+
+button, label, input, p, a, li {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: #{map.get(variables.$fonts, family, inter)};
+  font-weight: #{map.get(variables.$fonts, weight, bold)};
+}

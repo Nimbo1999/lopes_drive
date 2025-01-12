@@ -1,0 +1,7 @@
+@use "sass:map";
+@use "/app/styles/variables";
+@use "/app/styles/mixin/dimensions";
+
+.button {
+  @include dimensions.input-dimensions(map.get(variables.$palette, primary, main));
+}
