@@ -1,0 +1,38 @@
+@use "sass:map";
+@use "/app/styles/variables";
+
+.modal {
+  position: absolute;
+  width: 100dvw;
+  height: 100dvh;
+  top: 0;
+  left: 0;
+  background-color: rgba(black, 0.35);
+  opacity: 0;
+  transition: variables.$transition;
+  z-index: -1;
+
+  &.open {
+    opacity: 1;
+    z-index: 0;
+  }
+
+  &__dialog {
+    background-color: map.get(variables.$palette, background, card);
+    position: relative;
+    width: 95%;
+    border-radius: 0.25rem;
+    left: 2.5%;
+    top: 30%;
+    transform: translate(0, -50%);
+    box-shadow: variables.$shadow;
+  }
+
+  &__content {
+    padding: 2rem;
+  }
+
+  &__footer {
+
+  }
+}

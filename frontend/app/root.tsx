@@ -33,7 +33,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
-
+        <div id="react-portal" />
         <ScrollRestoration />
         <Scripts />
       </body>

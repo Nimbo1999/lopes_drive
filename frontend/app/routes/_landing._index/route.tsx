@@ -1,7 +1,9 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 
 import styles from "./landing.module.scss";
-import { Button } from "~/components";
+import { Button, InputGroup, Modal } from "~/components";
+import { useState } from "react";
+import { Form, useActionData } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -11,12 +13,19 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const actionData = useActionData<typeof action>();
+  const [isOpen, setOpen] = useState(false);
+
+  console.log(actionData);
+
   return (
     <main className={styles.landing}>
       <div className={styles.landing__header}>
         <h2>My Drive</h2>
 
-        <Button variant="small">Upload</Button>
+        <Button size="small" onClick={() => setOpen(true)}>
+          Upload
+        </Button>
       </div>
 
       <div className={styles.landing__content}>
@@ -24,6 +33,18 @@ export default function Index() {
           <ImageCard key={alt} alt={alt} src={src} />
         ))}
       </div>
+
+      <Modal isOpen={isOpen} onClose={() => setOpen(false)}>
+        <Form className={styles["landing__upload-form"]} method="POST">
+          <h3>Upload your file</h3>
+
+          <InputGroup label="File:" type="file" id="file" />
+
+          <Button fullWidth type="submit">
+            Upload
+          </Button>
+        </Form>
+      </Modal>
     </main>
   );
 }
@@ -40,3 +61,7 @@ const resources = [...Array(5)].map((_, index) => ({
   src: `/assets/photo${index + 1}.jpg`,
   alt: `animal ${index + 1}`,
 }));
+
+export const action = (_: ActionFunctionArgs) => {
+  return { success: true };
+};

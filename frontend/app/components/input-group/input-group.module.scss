@@ -14,5 +14,9 @@
     @include dimensions.input-dimensions(map.get(variables.$palette, background, card));
     color: #{map.get(variables.$palette, text, secondary)};
     outline-color: rgba(map.get(variables.$palette, text, secondary), 0.5);
+
+    &[type="file"] {
+      padding: 0;
+    }
   }
 }

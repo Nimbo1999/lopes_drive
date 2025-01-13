@@ -3,10 +3,29 @@
 @use "/app/styles/mixin/dimensions";
 
 .button {
+  transition: variables.$transition;
   @include dimensions.input-dimensions(map.get(variables.$palette, primary, main));
+
+  &:active, &:focus {
+    background-color: map.get(variables.$palette, primary, dark);
+    border-color: map.get(variables.$palette, primary, dark);
+  }
+
+  &.button--text {
+    @include dimensions.input-dimensions(transparent);
+    color: map.get(variables.$palette, primary, main);
+
+    &:active, &:focus {
+      border-color: map.get(variables.$palette, primary, main);
+    }
+  }
 
   &.button--small {
     padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
+  }
+
+  &.button--full-width {
+    width: 100%;
   }
 }
