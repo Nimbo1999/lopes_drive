@@ -1,0 +1,11 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+}
