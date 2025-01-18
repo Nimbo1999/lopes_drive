@@ -1,17 +1,17 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Form } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 
-import { Button, InputGroup, Anchor } from "~/components";
+import { Button, InputGroup } from "~/components";
 
-import styles from "./login.module.scss";
+import styles from "./register.module.scss";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Login - Lopes Drive" },
+    { title: "Create Accont - Lopes Drive" },
     {
       name: "description",
       content:
-        "Welcome to the lopes drive app, please login to your account to be able to access your private driver",
+        "Welcome to the lopes drive app, please create your account to start using the Lopes Drive app",
     },
   ];
 };
@@ -20,22 +20,23 @@ export default function Index() {
   return (
     <div className={styles.container}>
       <main className={styles.card}>
-        <h1>Login</h1>
+        <h1>Create account</h1>
 
         <Form className={styles["login-form"]}>
           <InputGroup id="username" label="Username:" />
+          <InputGroup id="email" label="Email:" />
           <InputGroup id="password" type="password" label="Password:" />
+          <InputGroup
+            id="confirm_password"
+            type="password"
+            label="Confirm Password:"
+          />
 
           <div className={styles["login-form__forgot-password"]}>
-            <p>Forgot your password?</p>{" "}
-            <Anchor to="../change-password">Change password</Anchor>
+            <p>Already have an account?</p> <Link to="../login">Login</Link>
           </div>
 
-          <Button type="submit">Sign in</Button>
-
-          <Anchor to="../register" variant="button" color="secondary">
-            Create account
-          </Anchor>
+          <Button type="submit">Create account</Button>
         </Form>
       </main>
 

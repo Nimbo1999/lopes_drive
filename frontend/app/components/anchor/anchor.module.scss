@@ -1,0 +1,33 @@
+@use "sass:map";
+@use "/app/styles/variables";
+@use "/app/styles/mixin/dimensions";
+
+.link {
+
+}
+
+.button {
+  @include dimensions.input-dimensions(map.get(variables.$palette, primary, main));
+  transition: variables.$transition;
+  text-align: center;
+  text-decoration: none;
+
+  &:active, &:focus {
+    background-color: map.get(variables.$palette, primary, dark);
+    border-color: map.get(variables.$palette, primary, dark);
+  }
+
+  &.secondary {
+    @include dimensions.input-dimensions(map.get(variables.$palette, secondary, main));
+
+    &:active, &:focus {
+      background-color: map.get(variables.$palette, secondary, dark);
+      border-color: map.get(variables.$palette, secondary, dark);
+    }
+  }
+
+  &.small {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
+}
