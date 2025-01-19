@@ -8,6 +8,10 @@
       "path": "./storage",
       "name": "Storage APP"
     },
+    {
+      "path": "./users",
+      "name": "Users Service"
+    },
   ],
   "settings": {
     "editor.rulers": [
