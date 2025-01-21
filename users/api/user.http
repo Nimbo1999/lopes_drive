@@ -1,2 +1,6 @@
+@baseUrl = http://localhost
+@port = 8080
+@host = {{baseUrl}}:{{port}}
+
 # List users
-GET http://localhost HTTP/1.1
+GET {{host}} HTTP/1.1

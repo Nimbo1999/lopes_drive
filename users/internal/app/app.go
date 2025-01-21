@@ -3,9 +3,6 @@ package app
 import (
 	"net/http"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/credentials"
-	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -19,16 +16,13 @@ type App struct {
 	Env     *config.EnvironmentVariables
 }
 
-func NewApp(Env *config.EnvironmentVariables) *App {
-	sess := session.Must(session.NewSessionWithOptions(session.Options{
-		SharedConfigState: session.SharedConfigEnable,
-		Config:            *aws.NewConfig().WithRegion("us-east-1").WithCredentials(credentials.NewEnvCredentials()),
-	}))
+type AppParams struct {
+	Db  *dynamodb.DynamoDB
+	Env *config.EnvironmentVariables
+}
 
-	// Create DynamoDB client
-	dynamo := dynamodb.New(sess)
-
-	userRepository := repositories.NewUserRepository(dynamo)
+func NewApp(params *AppParams) *App {
+	userRepository := repositories.NewUserRepository(params.Db)
 	userService := services.NewUserService(userRepository)
 
 	mux := chi.NewMux()
@@ -37,7 +31,7 @@ func NewApp(Env *config.EnvironmentVariables) *App {
 	userService.RegisterHandlers(mux)
 
 	return &App{
-		Env:     Env,
+		Env:     params.Env,
 		Handler: mux,
 	}
 }
