@@ -1,24 +1,17 @@
 package models
 
 import (
-	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
 )
 
 type User struct {
-	ID       string
-	Username string
-	Email    string
-	Password string
+	Username string `json:"username"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 func NewUser(username, email string) (*User, error) {
-	uuid, err := uuid.NewUUID()
-	if err != nil {
-		return nil, err
-	}
 	return &User{
-		ID:       uuid.String(),
 		Username: username,
 		Email:    email,
 	}, nil

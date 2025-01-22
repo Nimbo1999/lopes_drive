@@ -1,12 +1,17 @@
 package services
 
 import (
-	"github.com/go-chi/chi/v5"
+	"errors"
+
 	"github.com/nimbo1999/lopes_drive/users/internal/models"
 )
 
-type Service interface {
-	RegisterHandlers(*chi.Mux)
+var (
+	ErrInvalidPayload = errors.New("repository: invalid payload type")
+)
+
+type Service[Model any] interface {
+	Create(payload any) (*Model, error)
 }
 
 type Pagination struct {

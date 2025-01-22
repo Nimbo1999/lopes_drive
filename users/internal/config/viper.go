@@ -2,6 +2,7 @@ package config
 
 import (
 	"log"
+	"os"
 
 	"github.com/spf13/viper"
 )
@@ -22,9 +23,12 @@ type EnvironmentVariables struct {
 }
 
 func CreateEnvironment() *EnvironmentVariables {
-	return &EnvironmentVariables{
+	env := &EnvironmentVariables{
 		AwsAccessKey: viper.GetString("AWS_ACCESS_KEY_ID"),
 		AwsSecretKey: viper.GetString("AWS_SECRET_ACCESS_KEY"),
 		Port:         viper.GetString("PORT"),
 	}
+	os.Setenv("AWS_ACCESS_KEY_ID", env.AwsAccessKey)
+	os.Setenv("AWS_SECRET_ACCESS_KEY", env.AwsSecretKey)
+	return env
 }

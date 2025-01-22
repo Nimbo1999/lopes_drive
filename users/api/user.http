@@ -2,5 +2,12 @@
 @port = 8080
 @host = {{baseUrl}}:{{port}}
 
-# List users
-GET {{host}} HTTP/1.1
+# Create User
+POST {{host}}/user HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "nimbo",
+  "email": "matlopes1999@gmail.com",
+  "password": "add-your-password"
+}

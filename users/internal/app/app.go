@@ -7,6 +7,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/nimbo1999/lopes_drive/users/internal/config"
+	"github.com/nimbo1999/lopes_drive/users/internal/handlers"
 	"github.com/nimbo1999/lopes_drive/users/internal/repositories"
 	"github.com/nimbo1999/lopes_drive/users/internal/services"
 )
@@ -24,11 +25,12 @@ type AppParams struct {
 func NewApp(params *AppParams) *App {
 	userRepository := repositories.NewUserRepository(params.Db)
 	userService := services.NewUserService(userRepository)
+	userHandler := handlers.NewUserHandler(userService)
 
 	mux := chi.NewMux()
 	mux.Use(middleware.Logger)
 	mux.Use(middleware.SetHeader("Content-Type", "application/json"))
-	userService.RegisterHandlers(mux)
+	userHandler.RegisterHandlers(mux)
 
 	return &App{
 		Env:     params.Env,
