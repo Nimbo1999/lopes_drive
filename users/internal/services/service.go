@@ -12,6 +12,7 @@ var (
 
 type Service[Model any] interface {
 	Create(payload any) (*Model, error)
+	FindById(id string) (*Model, error)
 }
 
 type Pagination struct {

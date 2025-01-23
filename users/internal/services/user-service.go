@@ -34,3 +34,7 @@ func (service *userService) Create(p any) (*models.User, error) {
 	}
 	return user, nil
 }
+
+func (service *userService) FindById(id string) (*models.User, error) {
+	return service.repository.FindById(id)
+}

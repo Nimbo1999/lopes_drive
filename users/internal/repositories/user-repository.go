@@ -8,11 +8,12 @@ import (
 )
 
 type userRepository struct {
-	dynamo *dynamodb.DynamoDB
+	dynamo    *dynamodb.DynamoDB
+	tableName *string
 }
 
 func NewUserRepository(db *dynamodb.DynamoDB) *userRepository {
-	return &userRepository{db}
+	return &userRepository{dynamo: db, tableName: aws.String("lopes-drive_users")}
 }
 
 func (repository *userRepository) Create(model *models.User) error {
@@ -22,7 +23,7 @@ func (repository *userRepository) Create(model *models.User) error {
 	}
 
 	input := &dynamodb.PutItemInput{
-		TableName: aws.String("lopes-drive_users"),
+		TableName: repository.tableName,
 		Item:      item,
 	}
 
@@ -33,7 +34,27 @@ func (repository *userRepository) Create(model *models.User) error {
 }
 
 func (repository *userRepository) FindById(id string) (*models.User, error) {
-	return nil, ErrRepositoryMethodNotImplementedYet
+	input := &dynamodb.GetItemInput{
+		TableName: repository.tableName,
+		Key: map[string]*dynamodb.AttributeValue{
+			"username": {S: aws.String(id)},
+		},
+	}
+
+	output, err := repository.dynamo.GetItem(input)
+	if err != nil {
+		return nil, err
+	}
+
+	if output.Item == nil {
+		return nil, ErrRecordNotFound
+	}
+
+	var user models.User
+	if err = dynamodbattribute.UnmarshalMap(output.Item, &user); err != nil {
+		return nil, err
+	}
+	return &user, nil
 }
 
 func (repository *userRepository) Delete(payload any) error {

@@ -11,3 +11,8 @@ Content-Type: application/json
   "email": "matlopes1999@gmail.com",
   "password": "add-your-password"
 }
+
+###
+# Get user by username
+
+GET {{host}}/user/nimbo HTTP/1.1

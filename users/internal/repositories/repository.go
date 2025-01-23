@@ -12,4 +12,5 @@ type Repository[Model any] interface {
 
 var (
 	ErrRepositoryMethodNotImplementedYet = errors.New("repository: method not implemented yet")
+	ErrRecordNotFound                    = errors.New("repository: record not found")
 )
