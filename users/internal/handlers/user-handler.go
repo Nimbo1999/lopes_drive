@@ -48,6 +48,17 @@ func (handler *userHandler) createUser(response http.ResponseWriter, request *ht
 	user, err := handler.UserService.Create(payload)
 	if err != nil {
 		log.Println("error:", err.Error())
+		if err == services.ErrRecordAlreadyExist {
+			response.WriteHeader(http.StatusConflict)
+			encoder.Encode(ErrorResponse{
+				Code:        CreateUserAlreadyExist,
+				Message:     err.Error(),
+				ServiceName: UserServiceName,
+				Operation:   "create",
+			})
+			return
+		}
+
 		response.WriteHeader(http.StatusInternalServerError)
 		encoder.Encode(ErrorResponse{
 			Code:        CreateUserErrorCode,

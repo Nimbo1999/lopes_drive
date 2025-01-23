@@ -25,6 +25,10 @@ func (service *userService) Create(p any) (*models.User, error) {
 		return nil, err
 	}
 
+	if _, err = service.repository.FindById(user.Username); err != repositories.ErrRecordNotFound {
+		return nil, ErrRecordAlreadyExist
+	}
+
 	if err = user.SetPassword(payload.Password); err != nil {
 		return nil, err
 	}

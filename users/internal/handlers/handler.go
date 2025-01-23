@@ -20,8 +20,10 @@ const (
 	CreateUserErrorCode int16 = iota + 1000
 	// This is a generic error code that happens when calling the get user by username handler
 	GetUserByUsernameErrorCode
-	// This is error code that showup when the user was not found by the username
+	// This is ab error code that show up when the user was not found by the username
 	GetUserByUsernameNotFoundErrorCode
+	// This indicates that could not create the user because the username already exists
+	CreateUserAlreadyExist
 )
 
 const (

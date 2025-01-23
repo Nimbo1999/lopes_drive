@@ -7,7 +7,8 @@ import (
 )
 
 var (
-	ErrInvalidPayload = errors.New("repository: invalid payload type")
+	ErrInvalidPayload     = errors.New("repository: invalid payload type")
+	ErrRecordAlreadyExist = errors.New("service: unique record already exists")
 )
 
 type Service[Model any] interface {
